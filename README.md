@@ -2,7 +2,6 @@
 This repo is about testing AWS serverless function with a POC that will take an URL in input and output a PDF.
 
 ## Installation
-
 - `npm install -g serverless --save`
 - Create an AWS user
     - go to `https://console.aws.amazon.com/iam/home?#/home` and follow `https://serverless.com/framework/docs/providers/aws/guide/credentials/`
@@ -14,10 +13,7 @@ This repo is about testing AWS serverless function with a POC that will take an 
     - `cd aws`
     - `npm install`
     - `npm run deploy`
-- go to `https://eu-west-3.console.aws.amazon.com/cloudformation/home?region=eu-west-3` to see your whole stack
-- go to `https://s3.console.aws.amazon.com/s3/home` to see your S3 bucket
-- go to `https://console.aws.amazon.com/apigateway/home` to see your API gateaway
-- go to `https://console.aws.amazon.com/lambda/home` to see you lambda functions
+    - `npm run log`
 
 
 ## Utilisation
@@ -37,10 +33,14 @@ Website: https://serverless.com/
 This whole website propose a HUGE abstraction of serverless set-up. It offers a CLI tool that allows us to create and mount a Serverless Application instantly.
 
 The whole thing is based on the Amazon Services, so multiples instances of servers and services will be created with your AWS account.
-- API Gateway instance: To create HTTP endpoints as Event sources for your AWS Lambda Functions, use the Serverless Framework's easy AWS API Gateway Events syntax.
-- S3 instance: to store documents at amazon.
 - CloudFormation: Actually contains the whole stack of deployed services. It's then pretty easy to follow exactly what you have and what is used or not.
+    - go to `https://eu-west-3.console.aws.amazon.com/cloudformation/home`
+- API Gateway instance: To create HTTP endpoints as Event sources for your AWS Lambda Functions, use the Serverless Framework's easy AWS API Gateway Events syntax.
+    - go to `https://console.aws.amazon.com/apigateway/home`
+- S3 instance: to store documents at amazon.
+    - go to `https://s3.console.aws.amazon.com/s3/home`
 - AWS lambda: which is a serverless function.
+    - go to `https://console.aws.amazon.com/lambda/home`
 
 #### How does it work
 With the default boilerplate `sls create`, there are two files that are created with the init function:
