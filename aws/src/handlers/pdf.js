@@ -2,11 +2,18 @@ import log from '../utils/log'
 import pdf, { makePrintOptions } from '../chrome/pdf'
 
 export default async function handler (event, context, callback) {
-    const queryStringParameters = event.queryStringParameters || {}
-    const {
+    const queryStringParameters = event.queryStringParameters || {};
+
+    const urlDomainRegex = /^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^:\/?\n]+)/;
+    const re = new RegExp(urlDomainRegex,'g');
+
+    let {
         url,
+        fileName,
         ...printParameters
     } = queryStringParameters
+
+    fileName = fileName || re.exec(url)[1].replace(new RegExp('\\.', 'g'), '_');
 
     const printOptions = makePrintOptions(printParameters)
     let data;
@@ -39,6 +46,7 @@ export default async function handler (event, context, callback) {
         isBase64Encoded: true,
         headers: {
             'Content-Type': 'application/pdf',
+            "Content-disposition": "attachment; filename=\"" + fileName +"\".pdf"
         },
     })
 }
