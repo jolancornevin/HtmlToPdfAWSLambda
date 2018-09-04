@@ -13,7 +13,8 @@ export default async function handler (event, context, callback) {
         ...printParameters
     } = queryStringParameters
 
-    fileName = fileName || re.exec(url)[1].replace(new RegExp('\\.', 'g'), '_');
+    // if no fileName is specify, we use the url domain. For instance, https://github.com/jolancornevin will become 'github'
+    fileName = fileName || re.exec(url)[1].split('.').slice(0, -1).join('_');
 
     const printOptions = makePrintOptions(printParameters)
     let data;
@@ -46,7 +47,7 @@ export default async function handler (event, context, callback) {
         isBase64Encoded: true,
         headers: {
             'Content-Type': 'application/pdf',
-            "Content-disposition": "attachment; filename=\"" + fileName +"\".pdf"
+            "Content-disposition": "attachment; filename=\"" + fileName +".pdf\""
         },
     })
 }
