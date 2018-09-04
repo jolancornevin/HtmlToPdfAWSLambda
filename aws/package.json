@@ -14,10 +14,13 @@
   },
   "scripts": {
     "test": "npm run lint && npm run ava",
+    "watch:test": "ava --watch",
+    "ava": "ava",
     "lint": "npm run lint:eslint -s",
     "lint:eslint": "eslint $npm_package_config_jsSrc",
     "deploy": "serverless deploy -v",
-    "upgrade-dependencies": "yarn upgrade-interactive --latest --exact"
+    "upgrade-dependencies": "yarn upgrade-interactive --latest --exact",
+    "log": "serverless logs -f pdf -t"
   },
   "repository": {
     "type": "git",
