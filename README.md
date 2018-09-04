@@ -25,8 +25,16 @@ You can also specify a `fileName` is you want. Else, the domain of the url will 
 ### Screenshots
 ![exemple screenshot](https://image.ibb.co/fmJQZe/html_To_Pdf_exemple.png)
 
-## Explanation of the stack
+## TODO
+- move it out of dev
+- time it
+- makes sure it's secure:
+    - possibly rate limit it
+    - or create a auth system
+- create a monitor to alert on cost and calls
+- make sure the S3 is not call every time we call the serverless function (as it's rate limited to 20 000) requests
 
+## Explanation of the stack
 ### Serverless repo
 Website: https://serverless.com/
 
