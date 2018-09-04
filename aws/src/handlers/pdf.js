@@ -18,6 +18,13 @@ export default async function handler (event, context, callback) {
     const printOptions = makePrintOptions(printParameters)
     let data;
 
+    if (!url) {
+        console.error('Error for PDF, there was not specified url');
+        return callback(null, {
+            statusCode: 400
+        });
+    }
+
     log('Processing PDFification for', url, printOptions)
 
     const startTime = Date.now()
